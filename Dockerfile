@@ -33,7 +33,9 @@ WORKDIR $software
 RUN Rscript -e "install.packages(c('BiocManager','dplyr','readxl','flowCore','cowplot','ggplot2'));BiocManager::install('Seurat')"
 
 # copy esssential files
-#COPY run.R $software/bin/
+WORKDIR $software
+RUN git clone https://github.com/yqyuhao/flowcyto_analysis.git && cd flowcyto_analysis 
+COPY run.R $software/bin/
 
 # chown root:root
 WORKDIR $software
