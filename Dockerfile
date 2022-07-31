@@ -1,4 +1,4 @@
-FROM ubuntu:20.04
+FROM ubuntu:22.04
 
 MAINTAINER yuhao<yqyuhao@outlook.com>
 
@@ -15,19 +15,13 @@ RUN set -x \
 # install packages
 RUN apt-get update \
 
-&& apt-get install -y less curl apt-utils vim wget gcc-7 g++-7 make cmake git unzip dos2unix libncurses5 \
+&& apt-get install -y less curl apt-utils vim wget gcc-9 g++-9 make cmake git unzip dos2unix libncurses5 \
 
 # lib
 && apt-get install -y zlib1g-dev libjpeg-dev libncurses5-dev libbz2-dev liblzma-dev libcurl4-gnutls-dev \
  
 # python3 perl java r-base
-&& apt-get install -y python3 python3-dev python3-pip python perl openjdk-8-jdk
-
-# r-base
-RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9 \
-&& add-apt-repository 'deb https://mirrors.ustc.edu.cn/CRAN/bin/linux/ubuntu bionic-cran40/' \
-&& apt update \
-&& apt-get install -y r-base r-base-dev
+&& apt-get install -y python3 python3-dev python3-pip perl openjdk-8-jdk r-base r-base-dev 
 
 ENV software /yqyuhao
 
@@ -35,7 +29,7 @@ ENV software /yqyuhao
 RUN mkdir -p $software/database $software/bin /data /data/analysis 
 
 # install R packages
-WORKDIR $software/source
+WORKDIR $software
 RUN Rscript -e "install.packages(c('BiocManager','dplyr','readxl','flowCore','cowplot','ggplot2'));BiocManager::install('Seurat')"
 
 # copy esssential files
