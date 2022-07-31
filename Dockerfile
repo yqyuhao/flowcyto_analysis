@@ -31,7 +31,7 @@ RUN mkdir -p $software/database $software/bin /data /data/analysis
 
 # install R packages
 WORKDIR $software/source
-RUN Rscript -e "install.packages('BiocManager','dplyr','readxl','flowCore','cowplot','ggplot2');BiocManager::install('Seurat')"
+RUN Rscript -e "install.packages(c('BiocManager','dplyr','readxl','flowCore','cowplot','ggplot2'));BiocManager::install('Seurat')"
 
 # copy esssential files
 #COPY flowcyto.R $software/bin/
