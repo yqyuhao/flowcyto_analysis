@@ -35,7 +35,7 @@ RUN Rscript -e "install.packages(c('BiocManager','dplyr','readxl','cowplot','ggp
 # copy esssential files
 WORKDIR $software
 RUN git clone https://github.com/yqyuhao/flowcyto_analysis.git && cd flowcyto_analysis \
-&& cp run.R $software/bin/
+&& cp run.R run_rpca.R run_AML_MRD_Normal.R $software/bin/
 
 # chown root:root
 WORKDIR $software
