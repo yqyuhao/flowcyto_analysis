@@ -30,7 +30,7 @@ RUN mkdir -p $software/database $software/bin /data /data/analysis
 
 # install R packages
 WORKDIR $software
-RUN Rscript -e "install.packages(c('BiocManager','dplyr','readxl','cowplot','ggplot2'));BiocManager::install(c('Seurat','flowCore','clustree'), update = TRUE, ask = FALSE)"
+RUN Rscript -e "install.packages(c('BiocManager','dplyr','readxl','cowplot','ggplot2'));BiocManager::install(c('Seurat','flowCore','clustree','moncle3'), update = TRUE, ask = FALSE)"
 
 # copy esssential files
 WORKDIR $software
